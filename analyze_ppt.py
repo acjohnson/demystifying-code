@@ -1,5 +1,6 @@
 from __future__ import print_function
 from pptx import Presentation
+from pptx.util import Inches, Pt
 import collections
 import json
 import argparse
@@ -40,7 +41,7 @@ def analyze_ppt(input, output):
             }
         },
         "Brief history of programming languages": {
-            "": {
+            "Aaron's list of most popular languages": {
                 "item1": "1957 - FORTRAN - Compiled",
                 "item2": "1964 - BASIC - Interpreted",
                 "item3": "1970 - Pascal - Compiled",
@@ -58,7 +59,8 @@ def analyze_ppt(input, output):
                 "image1": {
                     "slide2.jpg": "right"
                 }
-            }
+            },
+            "slide_layout": 2
         },
     	"Interpreted vs Compiled": {
             "": {
@@ -187,18 +189,28 @@ def analyze_ppt(input, output):
 
     # Create slides
     for index, (title_key, title_value) in enumerate(titles.iteritems()):
-        # Choose the slide layout
-        slide = prs.slides.add_slide(prs.slide_layouts[1])
 
+        # Set default slide layout
+        default_layout = 1
+
+        # Set slide_layout if specified
+        for subtitle in title_value.keys():
+            if 'slide_layout' in subtitle:
+                slide_layout = title_value.get('slide_layout')
+                title_value.pop('slide_layout', None)
+            else:
+                slide_layout = default_layout
+
+        slide = prs.slides.add_slide(prs.slide_layouts[slide_layout])
         title = slide.shapes.title
         body_shape = slide.shapes.placeholders[1]
         tf = body_shape.text_frame
-
         title.text = '{}'.format(title_key)
 
-        # Add sub-title to slide
-        for slide_title in title_value.keys():
-            tf.text = '{}'.format(slide_title)
+        # Add subtitle to slide
+        for subtitle in title_value.keys():
+            p = tf.add_paragraph()
+            p.text = '{}'.format(subtitle)
 
         # Add content to slide
         for slide_index, slide_value in enumerate(title_value.values()):
@@ -209,6 +221,8 @@ def analyze_ppt(input, output):
                 # Add bullets
                 if "item" in content_key:
                     p = tf.add_paragraph()
+                    p.level = 1
+                    p.font.size = Pt(16)
                     p.text = '{}'.format(content_value)
 
                 # Add images
