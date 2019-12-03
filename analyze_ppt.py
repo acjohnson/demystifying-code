@@ -69,7 +69,8 @@ def analyze_ppt(input, output):
                 "image1": {
                     "slide3.jpg": "bottom"
                 }
-            }
+            },
+            "slide_layout": 2
         },
         "Scripts vs Programs": {
             "": {
@@ -82,59 +83,71 @@ def analyze_ppt(input, output):
                 "image1": {
                     "slide4.jpg": "bottom_right"
                 }
-            }
+            },
+            "slide_layout": 2
         },
-        "Strings2": {
-            "In python a string is most easily identified by the use of double quotes": {
-                "item1": "bar",
-                "item2": "foo",
+        "Common Python Data types": {
+            "Python is a dynamically typed language which means variables themselves are not bound to a specific data type. That said the following are the most commonly used data types in Python": {
+                "item1": "Integers (123)",
+                "item2": "Strings (abc)",
+                "item3": "Boolean (True/False)",
+                "item4": "Lists [1, 2, 3]",
+                "item5": "Dictionaries {Key: Value}",
                 "image": {
-                    "meme.jpg": "top_right"
+                    "slide5.jpg": "bottom_right"
                 }
-            }
+            },
+            "slide_layout": 2
         },
-        "Strings3": {
-            "In python a string is most easily identified by the use of double quotes": {
-                "item1": "bar",
-                "item2": "foo",
+        "Integers": {
+            "Integers in python are positive or negative whole numbers with no decimal point": {
+                "item1": "Python 2.7.16 (default, Oct  7 2019, 17:36:04) \n[GCC 8.3.0] on linux2\nType \\"help\\", \\"copyright\\", \\"credits\\" or \\"license\\" for more information.\n>>> x = 1\n>>> y = 2\n>>> type(x)\n<type 'int'>\n>>> type(y)\n<type 'int'>\n>>> print(x + y)\n3",
                 "image": {
-                    "meme.jpg": "top_right"
+                    "slide6.jpg": "bottom_right"
                 }
-            }
+            },
+            "slide_layout": 2
         },
-        "Strings4": {
+        "Strings": {
             "In python a string is most easily identified by the use of double quotes": {
-                "item1": "bar",
-                "item2": "foo",
+                "item1": "Python 2.7.16 (default, Oct  7 2019, 17:36:04) \n[GCC 8.3.0] on linux2\nType \\"help\\", \\"copyright\\", \\"credits\\" or \\"license\\" for more information.\n>>> x = \\"This is a string\\"\n>>> type(x)\n<type 'str'>\n>>> print(x)\nThis is a string",
                 "image": {
-                    "meme.jpg": "top_right"
+                    "slide7.jpg": "bottom"
                 }
-            }
+            },
+            "slide_layout": 2
         },
-        "Strings5": {
-            "In python a string is most easily identified by the use of double quotes": {
-                "item1": "bar",
-                "item2": "foo",
+        "Boolean": {
+            "Boolean simply means True or False": {
+                "item1": "Python 2.7.16 (default, Oct  7 2019, 17:36:04) \n[GCC 8.3.0] on linux2\nType \\"help\\", \\"copyright\\", \\"credits\\" or \\"license\\" for more information.\n>>> x = True\n>>> type(x)\n<type 'bool'>\n>>> if x is True:\n...     print(\\"Boolean is pronounced boo-lee-uhn\\")\n... else:\n...     print(\\"Boolean is pronounced bool-yaan\\")\n... \nBoolean is pronounced boo-lee-uhn",
                 "image": {
-                    "meme.jpg": "top_right"
+                    "slide8.jpg": "bottom_right"
                 }
-            }
+            },
+            "slide_layout": 2
         },
-        "Strings6": {
-            "In python a string is most easily identified by the use of double quotes": {
-                "item1": "bar",
-                "item2": "foo",
+        "Lists": {
+            "Lists are denoted by square brackets [ ] and contain comma separated values. Another name for a list is an Array.\nIf the list contains strings then it will need quotes, integers in the list wouldn't have any quotes": {
+                "item1": "Python 2.7.16 (default, Oct  7 2019, 17:36:04) \n[GCC 8.3.0] on linux2\nType \\"help\\", \\"copyright\\", \\"credits\\" or \\"license\\" for more information.\n>>> x = [\\"glass\\", \\"root beer\\", \\"vanilla ice cream\\", \\"straw\\"]\n>>> type(x)\n<type 'list'>\n>>> for index, ingredient in enumerate(x):\n...     print(index, ingredient)\n... \n(0, 'glass')\n(1, 'root beer')\n(2, 'vanilla ice cream')\n(3, 'straw')",
                 "image": {
-                    "meme.jpg": "top_right"
+                    "slide9.jpg": "bottom_right"
                 }
-            }
+            },
+            "slide_layout": 2
         },
-        "Strings7": {
-            "In python a string is most easily identified by the use of double quotes": {
-                "item1": "bar",
-                "item2": "foo",
+        "Dictionaries": {
+            "Dictionaries are denoted by curly braces { } and contain \\"key\\": \\"value\\" pairs. Another name for a dictionary is a Map.\nDictionaries can contain all of the previously mentioned data types including integers, strings, boolean, lists and more.": {
+                "item1": ">>> x = { \\"christmas\\": \\"tree\\",\n...       \\"thanksgiving\\": \\"turkey\\",\n...       \\"halloween\\": \\"jack-o-lantern\\",\n...       \\"easter\\": \\"bunny\\"\n...     }\n>>> type(x)\n<type 'dict'>\n>>> for key, value in x.items():\n...     print(key, value)\n... \n('easter', 'bunny')\n('halloween', 'jack-o-lantern')\n('christmas', 'tree')\n('thanksgiving', 'turkey')",
                 "image": {
-                    "meme.jpg": "top_right"
+                    "slide10.jpg": "bottom_right"
+                }
+            },
+            "slide_layout": 2
+        },
+        "Hands-on Lab!": {
+            "": {
+                "image": {
+                    "slide11.jpg": "center"
                 }
             }
         }
@@ -178,13 +191,13 @@ def analyze_ppt(input, output):
             "width": 0.7
         },
         "center": {
-            "left": 0.15,
-            "top": 0.1,
-            "width": 0.7
+            "left": 0.05,
+            "top": 0.2,
+            "width": 0.9
         }
     }
 
-    titles = json.loads(data, object_pairs_hook=collections.OrderedDict)
+    titles = json.loads(data, object_pairs_hook=collections.OrderedDict, strict=False)
     prs = Presentation(input)
 
     # Create slides
